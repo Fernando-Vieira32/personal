@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    container_name: personal_db
+    volumes:
+      - personal_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+
+  personal:
+    build: .
+    command: rails server -b 0.0.0.0
+    volumes:
+      - ".:/myapp"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@db:5432/mydatabase
+
+volumes:
+  personal_postgres_data:
