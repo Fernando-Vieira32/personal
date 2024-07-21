@@ -4,12 +4,15 @@ services:
   db:
     image: postgres:13
     container_name: personal_db
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test 
     volumes:
       - personal_postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+    command:
+      "postgres -c 'max_connections=500'"
+    ports:
+      - "5432:5432"    
 
   personal:
     build: .
@@ -19,9 +22,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgres://myuser:mypassword@db:5432/mydatabase
+      - db  
 
 volumes:
   personal_postgres_data:
