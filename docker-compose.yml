@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: postgres:13
-    container_name: personal_db
+    container_name: personal_db_13
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test 
