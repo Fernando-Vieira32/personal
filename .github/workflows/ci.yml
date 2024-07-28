@@ -6,15 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2.2'
           bundler-cache: true
-          
-      - name: List permissions before chmod
-        run: ls -l bin/qa
-
       - name: Lint Ruby files
         run: bin/qa
