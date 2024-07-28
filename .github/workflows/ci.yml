@@ -12,5 +12,9 @@ jobs:
         with:
           ruby-version: '3.2.2'
           bundler-cache: true
+          
+      - name: List permissions before chmod
+        run: ls -l bin/qa
+
       - name: Lint Ruby files
         run: bin/qa
