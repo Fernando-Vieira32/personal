@@ -4,6 +4,7 @@ AllCops:
   Exclude:
     - config/environments/development.rb
     - bin/**/*
+    - 'vendor/*'
 
 
 Style/Documentation:
