@@ -2,10 +2,11 @@ AllCops:
   TargetRubyVersion: 3.2.2
   NewCops: enable
   Exclude:
-    - config/environments/development.rb
     - bin/**/*
+    - config/environments/development.rb
+    - db/**/*
+    - db/schema.rb
     - vendor/**/*
-
 
 Style/Documentation:
   Enabled: false
