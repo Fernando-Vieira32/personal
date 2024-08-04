@@ -21,6 +21,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'rspec-rails'
 end
 
 group :development do
