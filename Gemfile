@@ -19,9 +19,9 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'rspec-rails'
 end
 
 group :development do
