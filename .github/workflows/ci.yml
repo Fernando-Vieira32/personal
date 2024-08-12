@@ -30,6 +30,7 @@ jobs:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST: localhost
+      TEST_DATA_BASE: personal_teste
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
