@@ -9,7 +9,7 @@ development:
   <<: *default
   database: <%= ENV["DEVELOPMENT_DATA_BASE"] %>
   username: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 test:
   <<: *default
