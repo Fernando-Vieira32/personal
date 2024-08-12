@@ -14,7 +14,7 @@ jobs:
           bundler-cache: true
       - name: Lint Ruby files
         run: bin/qa
-        
+
   rspec:
     runs-on: ubuntu-22.04
     services:
@@ -36,7 +36,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e
         with:
-          ruby-version: '3.1.0'
+          ruby-version: '3.2.2'
           bundler-cache: true
       - name: Set up database schema
         run: bin/rails db:create db:schema:load
