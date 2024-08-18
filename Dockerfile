@@ -1,5 +1,5 @@
 # Use a imagem oficial do Ruby como base
-FROM ruby:3.2.2
+FROM ruby:3.3.4-slim
 
 # Instale as dependências do sistema
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
