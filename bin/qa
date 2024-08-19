@@ -5,7 +5,7 @@ echo "Running rubocop..."
 bundle exec rubocop
 
 echo "Running reek..."
-if bundle exec reek --no-color --single-line; then
+if bundle exec reek --no-color --single-line; then 
   echo "Reek passed with no issues."
   exit 1
 else
