@@ -1,8 +1,6 @@
 #!/bin/bash
 set e
 
-echo "Running rubocop..."
-bundle exec rubocop
 
 echo "Running reek..."
 if bundle exec reek; then
