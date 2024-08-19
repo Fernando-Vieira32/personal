@@ -10,3 +10,6 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+convention:Style/FrozenStringLiteralComment:
+  Enabled: false
