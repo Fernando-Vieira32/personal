@@ -1,17 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "Running rubocop..."
+echo "[Running] Rubocop..."
 bundle exec rubocop
 
-echo "Running reek..."
-OUTPUT=$(bundle exec reek --no-color --single-line)
-echo "$OUTPUT"
-
-# Verifique se o output contém avisos
-if echo "$OUTPUT" | grep -q "UncommunicativeMethodName"; then
-  echo "Reek found code smells."
-  exit 1
-else
-  echo "Reek passed with no issues."
-fi
+echo ""
+echo "[Running] Reek..."
+bundle exec reek
