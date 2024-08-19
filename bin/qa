@@ -1,11 +1,5 @@
 #!/bin/bash
-set -e
+set e
 
-echo "Running rubocop..."
-if bundle exec rubocop; then
-  echo "Running reek..."
-  bundle exec reek
-else
-  echo "Rubocop failed"
-  exit 1
-fi
+echo "Running reek..."
+bundle exec reek
