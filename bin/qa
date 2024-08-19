@@ -1,9 +1,11 @@
 #!/bin/bash
-set e
+set -e
 
+echo "Running rubocop..."
+bundle exec rubocop
 
 echo "Running reek..."
-if bundle exec reek; then
+if bundle exec reek --no-color --single-line; then
   echo "Reek passed with no issues."
 else
   echo "Reek found code smells."
