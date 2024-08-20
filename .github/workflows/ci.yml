@@ -15,7 +15,8 @@ jobs:
       - name: Lint Ruby files
         run: bin/qa
       - name: Run Reek
-        run: bundle exec reek
+        run: |
+          bundle exec reek --no-color --fail-on-warnings
 
   rspec:
     runs-on: ubuntu-22.04
