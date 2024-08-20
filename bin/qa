@@ -6,4 +6,4 @@ bundle exec rubocop
 
 echo ""
 echo "[Running] Reek..."
-bundle exec reek
+bundle exec reek --no-progress
