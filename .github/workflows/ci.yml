@@ -12,11 +12,8 @@ jobs:
         with:
           ruby-version: '3.3.4'
           bundler-cache: true
-      - name: List executables
-        run: ls -la ${{ github.workspace }}/vendor/bundle/bin
       - name: Lint Ruby files
         run: bin/qa
- 
 
   rspec:
     runs-on: ubuntu-22.04
