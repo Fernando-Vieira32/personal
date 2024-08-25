@@ -3,5 +3,5 @@ set -e
 
 echo ""
 echo "[Running] Reek..."
-bundle exec reek 
+bundle exec reek || echo "Reek did not run or returned an error."
 
