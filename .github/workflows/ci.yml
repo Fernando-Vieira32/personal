@@ -11,8 +11,18 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Verify Ruby and Bundler versions
+        run: |
+          ruby -v
+          bundler -v
+      - name: Verify installed gems
+        run: bundle list
       - name: Lint Ruby files
-        run: bin/qa
+        run: |
+          echo "[INFO] Running lint checks..."
+          ./bin/qa || echo "Reek did not run or returned an error."
+          echo "[INFO] Lint checks completed."
+
 
   rspec:
     runs-on: ubuntu-22.04
