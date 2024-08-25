@@ -11,17 +11,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Verify Ruby and Bundler versions
+      - name: Run Reek and capture output
         run: |
-          ruby -v
-          bundler -v
-      - name: Verify installed gems
-        run: bundle list
-      - name: Lint Ruby files
-        run: |
-          echo "[INFO] Running lint checks..."
-          ./bin/qa || echo "Reek did not run or returned an error."
-          echo "[INFO] Lint checks completed."
+          echo "[INFO] Running Reek..."
+          bundle exec reek > reek_output.log || { echo "Reek did not run or returned an error."; exit 1; }
+          cat reek_output.log
+          echo "[INFO] Reek completed."
 
 
   rspec:
