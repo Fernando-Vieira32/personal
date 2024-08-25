@@ -4,54 +4,57 @@ FROM ruby:3.3.4-slim as base
 # Configure o diretório de trabalho
 WORKDIR /myapp
 
-# Set production environment
-ENV BUNDLE_WITHOUT="development"
 
 # Instale as dependências do sistema
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     build-essential \
-    libpq-dev libvips \
-    bash bash-completion \
-    libffi-dev tzdata postgresql \
-    nodejs npm yarn \
-    wget postgresql-client \
+    libpq-dev \
+    libvips-dev \
+    bash \
+    libffi-dev \
+    tzdata \
+    postgresql-client \
+    nodejs \
+    npm \
+    yarn \
+    wget \
     apt-transport-https \
-    ca-certificates curl gnupg-agent gnupg gnupg2 \
+    ca-certificates \
+    curl \
+    gnupg \
     software-properties-common && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-# Install libssl
-RUN cd /tmp && \
-    wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && \
+# Instale libssl (certifique-se de que a URL é válida para sua versão do sistema)
+RUN wget -q http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb && \
     dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb && \
-    rm libssl1.1_1.1.1f-1ubuntu2_amd64.deb && cd /
+    rm libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
-# Throw-away build stage to reduce size of final image
+# Estágio de construção para reduzir o tamanho da imagem final
 FROM base as build
 
 # Adicione o Gemfile e o Gemfile.lock
 COPY Gemfile Gemfile.lock ./
-
 # Instale as gems
-RUN bundle install --without development test
+RUN bundle install
+RUN bundle update
 
-# Copy application code
+COPY Gemfile Gemfile.lock ./
+# Copie o código da aplicação
 COPY . .
 
 # Verifique a instalação do Rails
-RUN bundle exec rails -v
 
-# Final stage for app image
+# Estágio final para a imagem da aplicação
 FROM base
 
-# Copie os artefatos construídos: gems, aplicação
+# Copie os artefatos construídos: gems e aplicação
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /myapp /myapp
 
-# Verifique a presença do executável Rails
-RUN which rails
-
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile --gemfile app/ lib/
 # Exponha a porta 3000 para o servidor Rails
 EXPOSE 3000
 

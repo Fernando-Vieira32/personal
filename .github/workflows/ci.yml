@@ -11,13 +11,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Run Reek and capture output
-        run: |
-          echo "[INFO] Running Reek..."
-          bundle exec reek > reek_output.log || { echo "Reek did not run or returned an error."; exit 1; }
-          cat reek_output.log
-          echo "[INFO] Reek completed."
-
+      - name: Lint Ruby files
+        run: bin/qa
 
   rspec:
     runs-on: ubuntu-22.04
