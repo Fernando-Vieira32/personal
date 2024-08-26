@@ -1,5 +1,8 @@
 #!/bin/bash
-set e
+set -e
 
 echo "Running rubocop..."
 bundle exec rubocop
+
+echo "Running reek..."
+bundle exec reek .

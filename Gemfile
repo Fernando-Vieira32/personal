@@ -23,6 +23,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'reek'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
