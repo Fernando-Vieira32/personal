@@ -38,7 +38,6 @@ FROM base as build
 COPY Gemfile Gemfile.lock ./
 # Instale as gems
 RUN bundle install
-RUN bundle update
 
 COPY Gemfile Gemfile.lock ./
 # Copie o código da aplicação
