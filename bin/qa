@@ -6,7 +6,7 @@ ls -l bin/qa
 bundle show reek
 bundle exec which reek
 bundle exec reek --version
+ls -R app/
 
-
-bundle exec reek 
+bundle exec reek app/
 
