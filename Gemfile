@@ -21,9 +21,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'reek'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'reek'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
