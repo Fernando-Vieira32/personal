@@ -14,7 +14,10 @@
   <body>     
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+     <div class="w-full max-w-md p-8 bg-white shadow-md rounded-lg">       
+       <%= yield %>
+     </div>
+    </div>
   </body>
 </html>
