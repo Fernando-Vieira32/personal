@@ -20,5 +20,7 @@ COPY . /myapp
 # Exponha a porta 3000 para o servidor Rails
 EXPOSE 3000
 
+RUN rails assets:precompile
+
 # Comando para iniciar o servidor Rails
 CMD ["rails", "server", "-b", "0.0.0.0"]
