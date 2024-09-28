@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@preline/dropdown": "^2.5.0",
+    "preline": "^2.5.0"
+  }
+}
