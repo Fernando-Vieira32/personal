@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  safelist: [
+    { pattern: /bg-./ },
+  ],
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
